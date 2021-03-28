@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    class Vehicle {
+        static vehicleCount = 0;
+
+        constructor(type) {
+            this.type = type;
+            Vehicle.vehicleCount++;
+        }
+
+        printDetails() {
+            console.log("Vehicle index: " + Vehicle.vehicleCount);
+            console.log("Vehicle type: " + this.type);
+        }
+    }
+
+    Vehicle.prototype.drive = function () {
+        console.log("Vehicle is driving");
+
+    }
+
+    vehicle1 = new Vehicle('Car');
+    vehicle1.drive();
+    vehicle1.printDetails();
+
+
+    vehicle2 = new Vehicle('Jeep');
+    vehicle2.drive();
+    vehicle2.printDetails();
+
+    class Car extends Vehicle{
+        balanceWheels(){
+            console.log("Wheels are balanced");
+        }
+    }
+
+    Car.prototype = Object.create(Vehicle.prototype);
+    Car.prototype.constructor = Car;
+
+    car = new Car('toyota');
+    car.balanceWheels();
+    car.printDetails();
+    car.drive();
+
+</script>
+
+</body>
+</html>
