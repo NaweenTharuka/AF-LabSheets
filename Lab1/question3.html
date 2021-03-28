@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //Question 3
+
+    var vehicleName = 'Toyota';
+
+    function printVehicleName(){
+        console.log(this.vehicleName);
+    }
+
+    printVehicleName();
+
+    //************
+
+    var car={
+        vehicleName:"Nissan",
+        printVehicleName: printVehicleName
+    }
+
+    car.printName();
+
+    //*************
+
+    var car = {
+        vehicleName:"Audi",
+        printName: function(){
+            return function (){
+                console.log(this.vehicleName);
+            };
+        }
+    }
+
+    var execute = car.printName();
+    execute();
+
+    //**************
+
+    var car = {
+        vehicleName:"BMW",
+        printName: function(){
+            return function (){
+                console.log(this.vehicleName);
+            };
+        }
+    }
+
+    var execute = car.printName();
+    execute = execute.bind(car);
+    execute();
+
+
+</script>
+</body>
+</html>
