@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    function getValue(callback){
+        let value = 0;
+        setTimeout(function(){
+            value = 10;
+            //This is the anonymous function defined in line number 29
+            callback(value);
+        },1000);
+        return value;
+    }
+
+    function getNewValue(value, callback){
+        setTimeout(function(){
+            //This is the anonymous function defined in line number 31
+            callback(value * 100);
+        },1000);
+        return value;
+    }
+
+    //calling the function defined at line number 10
+    getValue(function (value) {
+        //calling the function defined at line number 20
+        getNewValue(value, function (newValue){
+            console.log(newValue);
+        })
+    });
+</script>
+
+</body>
+</html>

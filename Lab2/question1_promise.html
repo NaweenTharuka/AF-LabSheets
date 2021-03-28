@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    function getValue(){
+        let value = 0;
+        //resolve is for success
+        //reject is for error
+        return new Promise(function (resolve, reject){
+        setTimeout(function(){
+            value = 10;
+            resolve(value);
+        },1000);
+        });
+    }
+
+    function getNewValue(value){
+        return new Promise(function (resolve, reject){
+            setTimeout(function(){
+                resolve(value * 100);
+            },1000);
+        });
+
+    }
+
+    getValue().then(function (value){
+        return getNewValue(value)
+    }).then(function (value) {
+        console.log(value);
+    });
+</script>
+
+</body>
+</html>

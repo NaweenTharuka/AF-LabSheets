@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    function getValue(){
+        let value = 0;
+        //resolve is for success
+        //reject is for error
+        return new Promise((resolve, reject) => {
+            setTimeout(function(){
+                value = 10;
+                resolve(value);
+            },1000);
+        });
+    }
+
+    function getNewValue(value){
+        return new Promise((resolve, reject) => {
+            setTimeout(function(){
+                resolve(value * 100);
+            },1000);
+        });
+
+    }
+
+    function setValue(value){
+        return value + 1999;
+    }
+
+    async function print(){
+        let value = await getValue();
+        value = await getNewValue(value);
+        value = setValue(value);
+        //console.log(value);
+        return value;
+    }
+
+    //print();
+    print().then(value => console.log(value));
+
+
+    const persons = {
+        organization : 'Science',
+        people : ['John','Jane'],
+        print: function(){
+            this.people.forEach((value) => {
+                console.log(value, this.organization);
+            });
+        }
+    };
+
+    persons.print();
+
+</script>
+
+</body>
+</html>
